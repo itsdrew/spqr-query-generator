@@ -8,6 +8,14 @@ import static java.beans.Introspector.decapitalize;
 
 public class GraphQLQueryHelper {
 
+    /**
+     *
+     * @param pojo implements IGraphQLSerializable
+     * @param operationName name of graphql operation (from service class)
+     * @param serviceClass
+     * @param returnObjectClass type of object operation returns
+     * @return a graphql query or mutation string
+     */
     public static String createGraphQLQuery(IGraphQLSerializable pojo, String operationName, Class serviceClass, Class returnObjectClass) {
 
         GraphQLMethodInfo info = getParameterNamesAndTypesFromMethod(operationName, serviceClass);
