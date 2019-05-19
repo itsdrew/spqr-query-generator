@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+ext {
+    lombokVersion = "1.18.8"
+    spqrVersion = "0.9.9"
+}
+
+group 'itsdrew.graphql.spqr.querygenerator'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile "io.leangen.graphql:spqr:$spqrVersion"
+
+    testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    testCompile "org.projectlombok:lombok:$lombokVersion"
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
+    options.compilerArgs.add('-parameters')
+}
